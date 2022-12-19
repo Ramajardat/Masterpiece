@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AppointemnetController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,9 @@ Route::get('payment', function () {
 Route::get('profile', function () {
     return view('profile');
 });
+Route::post('appoint', [AppointemnetController::class, 'store']);
+
+Route::post('/storeCon', [RegisteredUserController::class, 'storeCon'])->name("storeCon");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

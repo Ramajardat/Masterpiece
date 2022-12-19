@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Appointment Form </h3>
-            <form action="#">
+            <form action="#" method="POST" >
                 <div class="mt-10">
                     <input type="text" name="first_name" placeholder="First Name"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required

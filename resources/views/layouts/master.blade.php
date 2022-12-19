@@ -65,11 +65,47 @@
                                         <li><a href="{{ asset('/services') }}">Services</a></li>
                                         <li><a href="{{ asset('/contact') }}">Contact</a></li>
 
-                                        <li><a href="{{ asset('/register') }}">Resgister</a>                                        </li>
-                                    </li>
+                                        {{-- <li><a href="{{ route('logout') }}">Logout</a></li> --}}
+
+                                        {{-- <li><a href="{{ asset('/register') }}">Resgister</a>                                        </li>
+                                    </li> --}}
 
                                         {{-- <li><a href="{{ asset('/login') }}">Login</a></li> --}}
+                                       @guest
+
+
+
+              <li class="nav-item"><a
+                      class="nav-link" aria-current="page"
+                      href="{{ asset('/register') }}">Register</a></li>
+
+
+
+                      @else
+
+                         <li class="nav-item dropdown" >
+
+                      <a class="nav-link dropdown-toggle" id="navbarDropdown"  style="border-radius:0" href="{{ asset('/profile') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false"aria-haspopup="true" >
+                     {{ Auth::user()->name }}
+
+
+                      </a>
+                      <ul class="dropdown-menu" id="dropdown-menu">
+                        <li class="dropdown-item"><a class="dropdown-item block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="{{ asset('/profile') }}">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <form method="POST" class="dropdown-item" action="{{ route('logout') }}">
+                          @csrf
+                          <x-dropdown-link :href="route('logout')"
+                          onclick="event.preventDefault();
+                                      this.closest('form').submit();">
+                      {{ __('Logout') }}
+                  </x-dropdown-link>
+                      </form>                                </ul>
+                    </li>
+  @endguest
+
                                     </ul>
+
                                 </nav>
                             </div>
                             <!-- left Btn -->

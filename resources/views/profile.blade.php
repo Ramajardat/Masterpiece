@@ -155,14 +155,15 @@
                     <span>Change Image</span>
                   </label>
                   <input id="file" type="file" onchange="loadFile(event)" />
-                  <img src="https://randomuser.me/api/portraits/women/11.jpg" id="output" width="100" />
+                  <img src="" id="output" width="100" />
                 </div>
                 <a class="btn btn-warning btn-sm" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onclick="editForm()"
                   style="width: 50px;margin-left: 690px;">Edit</a>
               </div>
               <div class="ms-3" style="margin-top: 130px">
-                <h5 id="userName">Andy Horwitz</h5>
-                <p id="role">New York</p>
+                <h5 id="userName">{{ Auth::user()->name }}
+</h5>
+                {{-- <p id="role">New York</p> --}}
               </div>
             </div>
 
@@ -170,11 +171,13 @@
               <div class="mb-5">
                 <p class="lead fw-normal mb-1">About</p>
                 <div class="p-4" style="background-color: #f9f9ff">
-                  <p class="font-italic mb-1" id="ad1">Address Line 1: Amman</p>
-                  <p class="font-italic mb-1" id="ad2">Address Line 2: Irbid </p>
-                  <p class="font-italic mb-0" id="city">City: Amman</p>
+                  <p class="font-italic mb-1" id="ad1">email:{{ Auth::user()->email }}
+</p>
+                  <p class="font-italic mb-0" id="city">city:{{ Auth::user()->city }}
+</p>
                   <p class="font-italic mb-0" id="country">Country:Jordan </p>
-                  <p class="font-italic mb-0" id="postal">Postal Code: 1333</p>
+                  <p class="font-italic mb-0" id="mobile">Mobile: {{ Auth::user()->mobile }}
+</p>
                 </div>
               </div>
               <div class="section-top-border">

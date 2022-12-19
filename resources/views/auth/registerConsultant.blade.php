@@ -1,13 +1,19 @@
 @extends('layouts.master')
+
+{{-- @php
+
+    use App\Models\departments;
+        $Department = departments::all();
+
+@endphp --}}
 @section('register')
 <x-guest-layout>
     <div class="container mt-5 w-50 h-auto">
 
-        <h1 style="margin-bottom:10px">Register</h1>
+        <h1 style="margin-bottom:10px">Register as Consultant</h1>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="post" action="/storeCon" enctype="multipart/form-data">
             @csrf
-
             <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Name')" />
@@ -57,6 +63,42 @@
 
                 <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
             </div>
+
+            <div class="mt-4">
+                <x-input-label for="image" :value="__('Image')" />
+
+                <x-text-input id="image" class="form-control block mt-1 w-full"
+                                type="file"
+                                name="image" required />
+
+                <x-input-error :messages="$errors->get('image')" class="mt-2" />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="certificate" :value="__('Certificate')" />
+
+                <x-text-input id="certificate" class="form-control block mt-1 w-full"
+                                type="file"
+                                name="certificate" required />
+
+                <x-input-error :messages="$errors->get('certificate')" class="mt-2" />
+            </div>
+            <div class="mt-4">
+                <x-input-label for="departement" :value="__('departement')" />
+
+                <select class="form-select" aria-label="Default select example" name="departement" required>
+                    <option selected>Choose department</option>
+                    {{-- {{dd(App\Models\departement::all())}} --}}
+                    @foreach (App\Models\departement::all() as  $appointemnet)
+                    <option value="{{$appointemnet->id  }}">{{$appointemnet->name}}	</option>
+                    @endforeach
+
+
+                  </select>
+
+                <x-input-error :messages="$errors->get('available_time')" class="mt-2" />
+            </div>
+
             <div class="mt-4">
                 <x-input-label for="city" :value="__('City')" />
                     <select class="form-select" aria-label="Default select example" name="city" required>
@@ -78,11 +120,20 @@
 
             </div>
             <div class="mt-4">
+                <x-input-label for="overview" :value="__('Overview')" />
+
+                <textarea id="overview" class="form-control block mt-1 w-full" type="date" name="overview" required>
+
+                </textarea>
+
+                <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
+            </div>
+            <div class="mt-4">
                 <x-input-label for="role" :value="__('user')" style="visibility: hidden"/>
 
                 <x-text-input id="role" class="form-control block mt-1 w-full"
                                 type="text" style="visibility: hidden"
-                                name="role" value="user" required />
+                                name="role" value="consultant" required />
 
                 <x-input-error :messages="$errors->get('role')" class="mt-2" />
             </div>
