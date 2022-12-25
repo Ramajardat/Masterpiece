@@ -6,6 +6,7 @@ use App\Models\Consultant;
 use App\Models\Appointement;
 use App\Models\Appointemnet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,21 +22,21 @@ class AppointemnetController extends Controller
         $appointment = Consultant::all();
         return view('appointment', ['user_id' => Auth::user()->id, 'conArr' => $appointment]);
     }
-    public function getConApp($id)
+
+    public function showuserpage()
     {
-        // $availableForDepartment = Consultant::where('user_id', $id)->get();
-        // return view('appointment', ['id' => $id, 'conArr' => $availableForDepartment]);
-        // $user = Auth::user();
-        // $consultantsArr =  User::where('role', 'Consultant')->get();
-
-        // $conArr = Consultant::all();
-        // $userCon = User::find($conArr[0]['user_id']);
-        // dd($userCon);
-
-        // $arr = Consultant::whereIn('user_id', $consultantsArr->modelKeys())->get();
-        // dd($arr);
+        $profileappoin = Appointement::all();
 
 
+        return view('profile', ['user_id' => Auth::user()->id, 'appointments' => $profileappoin]);
+    }
+
+    public function showAppoin()
+    {
+        $profileappoin = Appointement::all();
+
+
+        return view('admin.appointement', ['appointments' => $profileappoin]);
     }
 
     /**

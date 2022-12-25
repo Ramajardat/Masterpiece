@@ -84,18 +84,22 @@
                                 type="text" style="visibility: hidden"
                                 name="role" value="user" required />
 
-                <x-input-error :messages="$errors->get('role')" class="mt-2" />
+                <x-input-error :messages="$errors->get('role')"  />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-dark-600 hover:text-dark-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
+            <div class="flex items-center justify-end p-4">
                 <x-primary-button class="button button-contactForm boxed-btn ">
                     {{ __('Register') }}
                 </x-primary-button>
             </div>
+            <a class="underline text-sm text-dark-600 hover:text-dark-900" href="{{ route('registerConsultant') }}">
+                {{ __('Are you Consultant?') }}
+            </a>
+            or
+            <br>
+            <a class="underline text-sm text-dark-600 hover:text-dark-900" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
         </form>
         </div>
 

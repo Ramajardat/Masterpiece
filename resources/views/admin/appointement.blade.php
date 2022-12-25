@@ -26,23 +26,20 @@
                                         <!-- row -->
                                         <tr>
                                             <th>#</th>
-                                            <th>Email</th>
-                                            <th>Subscription Date</th>
+                                            <th>appointment_time</th>
+                                            <th>About the project</th>
                                         </tr>
 
-                                        {{-- @foreach ($allSubscribers as $subscriber) --}}
-                                            <tr>
+                                        @foreach($appointments as $appointment)
+                                        <tr>
                                                 <td>
-                                                    {{-- {{ $subscriber->id }} --}}
-                                                </td>
+                                                    {{$appointment->id}}                                                </td>
                                                 <td>
-                                                    {{-- {{ $subscriber->email }} --}}
-                                                </td>
+                                                    {{$appointment->appointment_time}}                                                </td>
                                                 <td>
-                                                    {{-- {{ $subscriber->created_at }} --}}
-                                                </td>
+                                                    {{$appointment->message}}                                                </td>
                                             </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
 
                                     </tbody>
                                 </table>

@@ -41,7 +41,7 @@
     <!-- Preloader Start-->
     <header>
         <!-- Header Start -->
-        <div class="header-area header_area">
+        <div class="header-area header_area" style="border: 2px solid rgba(255,159,103,0.1);">
             <div class="main-header">
              <div class="header-bottom  header-sticky">
                 <div class="container-fluid">
@@ -59,11 +59,13 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="{{ asset('/') }}">Home</a></li>
-                                        <li><a href="{{ asset('/about') }}">about</a>
+                                        <li><a href="#about">about</a>
 
                                         </li>
-                                        {{-- <li><a href="#services">Services</a></li> --}}
-                                        <li><a href="{{ asset('/contact') }}">Contact</a></li>
+                                        <li><a href="#services">Services</a></li>
+                                        <li><a href="#consultants">Consultants</a></li>
+
+                                        {{-- <li><a href="{{ asset('/contact') }}">Contact</a></li> --}}
 
                                         {{-- <li><a href="{{ route('logout') }}">Logout</a></li> --}}
 
@@ -110,8 +112,13 @@
                             </div>
                             <!-- left Btn -->
                             <div class="header-right-btn f-right d-none d-lg-block  ml-30">
+                                @guest
+                                <a href="{{ asset('/register') }}" class="header-btn">Make an Appointment</a>
+
+                                @else
 
                                 <a href="{{ asset('/appointment') }}" class="header-btn">Make an Appointment</a>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -136,7 +143,7 @@
 
 
 
-<footer>
+<footer style="border: 2px solid rgba(255,159,103,0.1);">
     <div class="footer-wrapper section-bg2 pl-100"
    >
         <!-- Footer Start-->
@@ -183,24 +190,29 @@
                             <div class="footer-tittle">
                                 <h4>Company</h4>
                                 <ul>
-                                    <li><a href="{{ asset('/about') }}">About</a></li>
-                                    <li><a href="{{ asset('/services') }}">Services</a></li>
-                                    <li><a href="{{ asset('/contact') }}">Contact</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#services">Services</a></li>
+                                    {{-- <li><a href="{{ asset('/contact') }}">Contact</a></li> --}}
+                                    @guest
+                                    <li><a href="{{ asset('/register') }}">Appointment</a></li>
+
+                                    @else
+
                                     <li><a href="{{ asset('/appointment') }}">Appointment</a></li>
+                                    @endguest
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
+                            <div class="footer-tittle text-dark">
                                 <h4>Contact us</h4>
                                 <ul>
-                                    <li><a href="#">consilia@gmail.com</a></li>
+                                    <li><a href="mailto:consilia@gmail.com">consilia@gmail.com</a></li>
                                     <li><a href="#">Jordan
                                         Amman</a></li>
-                                    <li class="number"><a href="#">
-                                        +962778084901</a></li>
+                                    <li class="number"><a href="tel:+962778084901">+962778084901</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -34,9 +34,7 @@ Route::post('store', [AppointemnetController::class, 'store'])->name("store");
 Route::get('payment', function () {
     return view('payment');
 });
-Route::get('profile', function () {
-    return view('profile');
-});
+Route::get('/profile', [AppointemnetController::class, 'showuserpage']);
 
 
 Route::get('/dashboard', function () {
@@ -59,6 +57,4 @@ Route::get('delete/{id}', [Departments::class, 'destroy']);
 // Route::get('/admin/subscribers', [ContactController::class, 'showSubscribers'])->name('admin.subscribers');
 
 
-Route::get('admin/appointement', function () {
-    return view('admin/appointement');
-});
+Route::get('admin/appointement', [AppointemnetController::class, 'showAppoin']);

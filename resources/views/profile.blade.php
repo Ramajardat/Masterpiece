@@ -155,10 +155,10 @@
                     <span>Change Image</span>
                   </label>
                   <input id="file" type="file" onchange="loadFile(event)" />
-                  <img src="" id="output" width="100" />
+                  <img src="assets/img/gallery/profile.png" id="output" width="100" />
                 </div>
-                <a class="btn btn-warning btn-sm" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onclick="editForm()"
-                  style="width: 50px;margin-left: 690px;">Edit</a>
+                {{-- <a class="btn btn-warning btn-sm" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onclick="editForm()"
+                  style="width: 50px;margin-left: 690px;">Edit</a> --}}
               </div>
               <div class="ms-3" style="margin-top: 130px">
                 <h5 id="userName">{{ Auth::user()->name }}
@@ -187,48 +187,26 @@
                         <div class="table-head">
                             <div class="serial">#</div>
                             <div class="country">Appointment</div>
-                            <div class="visit">Services</div>
-                            <div class="percentage">Percentages</div>
+                            <div class="visit">About the project</div>
+                            {{-- <div class="percentage">Percentages</div> --}}
                         </div>
+                        @foreach($appointments as $appointment)
+
                         <div class="table-row">
-                            <div class="serial">01</div>
+                            <div class="serial">{{$appointment->id}}</div>
                             <div class="country">
                                 {{-- <img src="assets/img/elements/f1.jpg" alt="flag"> --}}
-                                Sunday 12/10/2022</div>
-                            <div class="visit">Feasibiliaty Study</div>
-                            <div class="percentage">
+                                {{$appointment->appointment_time}}</div>
+                            <div class="visit">{{$appointment->message}}</div>
+                            {{-- <div class="percentage">
                                 <div class="progress">
                                     <div class="progress-bar color-1" role="progressbar" style="width: 80%"
                                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="table-row">
-                            <div class="serial">02</div>
-                            <div class="country">
-                                {{-- <img src="assets/img/elements/f2.jpg" alt="flag"> --}}
-                                Sunday 1/1/2022</div>
-                            <div class="visit">Market Analaysis</div>
-                            <div class="percentage">
-                                <div class="progress">
-                                    <div class="progress-bar color-2" role="progressbar" style="width: 30%"
-                                    aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-row">
-                            <div class="serial">03</div>
-                            <div class="country">
-                                 {{-- <img src="assets/img/elements/f3.jpg" alt="flag"> --}}
-                                 Monday 12/4/2022</div>
-                            <div class="visit">Financial Analaysis</div>
-                            <div class="percentage">
-                                <div class="progress">
-                                    <div class="progress-bar color-3" role="progressbar" style="width: 55%"
-                                    aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+
 
 
 

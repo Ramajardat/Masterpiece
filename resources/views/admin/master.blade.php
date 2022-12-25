@@ -135,13 +135,13 @@
                     <i class="bi bi-people-fill"></i>
                     <span>Contacts</span>
                 </a>
-            </li><!-- End Contacts Nav -->
+            </li><!-- End Contacts Nav --> --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="appointement">
                     <i class="bi bi-person-plus-fill"></i>
                     <span>Appointment</span>
                 </a>
-            </li><!-- End Subscribers Nav --> --}}
+            </li><!-- End Subscribers Nav -->
 
         </ul>
 
