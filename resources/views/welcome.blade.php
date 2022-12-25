@@ -13,7 +13,13 @@
                         <h1 data-animation="fadeInLeft" data-delay=".4s">Business  Consulting</h1>
                         <p data-animation="fadeInLeft" data-delay=".6s">We Help To Push Your Business To The Top Level.</p>
                         <!-- Hero Btn -->
+                        @guest
+
                         <a href="{{ asset('/register') }}" class="btn"  data-animation="fadeInLeft" data-delay=".9s" >Start Now</a>
+                        @else
+                        <a href="#services" class="btn"  data-animation="fadeInLeft" data-delay=".9s" >Start Now</a>
+                        @endguest
+
                     </div>
                     <div class="hero-img">
                         <img src="assets/img/hero/h1_hero1.png" alt=""  data-animation="fadeInRight" data-transition-duration="5s">
@@ -28,7 +34,7 @@
     </div>
     <!-- slider Area End-->
     <!--? Services Area Start -->
-    <section class="services-section section-padding30 fix">
+    <section class="services-section section-padding30 fix" id="services">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-10 col-lg-10 col-md-12">
@@ -40,181 +46,158 @@
                     </div>
                 </div>
             </div>
-            <div class="services-active">
+            <div class="all services-active d-flex">
+            @foreach ($Services as $service)
+
+            {{-- <div class="services-active"> --}}
                 <div class="single-services section-over1 text-center">
                     <div class="services-img">
                         <img src="assets/img/gallery/Research paper-amico.png" alt="">
                         <div class="services-caption">
-                            <h3><a href="#">Feasibiliaty Study</a></h3>
-                            <p>examines the viability or sustainability of an idea, project, or business.</p>
+                            <h3><a href="#">{{ $service['name'] }}</a></h3>
+                            <p>{{ $service['description'] }}</p>
+                            @guest
+                            <a href="{{ asset('/register') }}" class="btn btn3">Make Appointment</a>
+
+                            @else
+
                             <a href="{{ asset('/appointment') }}" class="btn btn3">Make Appointment</a>
+                            @endguest
+
                         </div>
                     </div>
                 </div>
-                <div class="single-services section-over1 text-center">
-                    <div class="services-img">
-                        <img src="assets/img/gallery/Analyze-bro.png" alt="">
-                        <div class="services-caption">
-                            <h3><a href="#">Financial Analaysis
-                            </a></h3>
-                            <p>an assessment of the viability, stability, and profitability of a business.</p>
-                            <a href="{{ asset('/appointment') }}" class="btn btn3">Make Appointment</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-services section-over1 text-center">
-                    <div class="services-img">
-                        <img src="assets/img/gallery/Swot analysis-amico.png" alt="">
-                        <div class="services-caption">
-                            <h3><a href="#">Stretagic Planning
-                            </a></h3>
-                            <p>define their vision and identify their organization's goals and objectives.</p>
-                            <a href="{{ asset('/appointment') }}" class="btn btn3">Make Appointment</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-services section-over1 text-center">
-                    <div class="services-img">
-                        <img src="assets/img/gallery/Business crisis-amico.png" alt="">
-                        <div class="services-caption">
-                            <h3><a href="#">Market Analysis
-                            </a></h3>
-                            <p>is the process of conducting thorough research on a specific market.</p>
-                            <a href="{{ asset('/appointment') }}" class="btn btn3">Make Appointment</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-        </div>
-    </section>
-    <!--Services Area End -->
-    <!--! About Area Start 01 -->
-    {{-- <section class="about-area fix">
-        <!--Right Contents  -->
-        <div class="about-img">
 
         </div>
-        <!-- left Contents -->
-        <div class="about-details">
-            <div class="right-caption">
-                <!-- Section Tittle -->
-                <div class="section-tittle mb-50">
-                    <h2>Our<br>Philosophy</h2>
-                </div>
-                <div class="about-more">
-                    <p>The automated process starts as soon as
-                        your clothes go into the machine. Duis cursus, mi quis
-                        viverra ornare, eros dolor interdum nulla, ut commodo
-                        diam libero vitae erat. Aenean faucibus nibh et justo
-                        cursus id rutrum lorem imperdiet. Nunc ut sem vitae
-                        risus tristique posuere.</p>
-                        <p class="pera-bottom">Interdum nulla, ut commodo diam libero vitae erat.
-                            Aenean faucibus nibh et justo cursus id rutrum lorem
-                            imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                            <div class="footer-tittles">
-                                <p>CEO, Consulto</p>
-                                <h2>Capcilena Hanry</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
-    <!-- About Area End-->
-    <!--! About Area Start 02-->
-    <div class="about-area2">
-        <!-- left Contents -->
-        <div class="about-details2">
-            <div class="right-caption2">
-                <!-- Section Tittle -->
-                <div class="section-tittle mb-50">
-                    <h2>Creative solutions<br>from experts</h2>
+   <!--! About Area Start 01 -->
+   <div class="section-tittle text-center ">
+       <span>About</span>
+       <h2>Everything you want to know about us.</h2>
+   </div>
+   <section class="about-area fix  section-padding30 fix" id="about">
+
+    <!--Right Contents  -->
+    <div class="about-img">
+
+    </div>
+    <!-- left Contents -->
+    <div class="about-details">
+        <div class="right-caption">
+            <!-- Section Tittle -->
+            <div class="section-tittle mb-50">
+                <h2>Our<br>Philosophy</h2>
+            </div>
+            <div class="about-more">
+                <p>To always satisfy our customers by adding value through exemplary service with a moral goal of doing the right thing.
+
+                    We have discovered that some consultancies provide great and long-lasting benefits and those that do all enable management to touch the spirit of their company and cause it to change.  This is our goal in providing consulting services.  Enabling positive change through adding value.
+</p>
+                <p class="pera-bottom"> Our work as consultants drives us to solve problems, teach, and enable businesses to do things they probably could have done on their own but would have taken much more time and expense than if we had not helped them.
+
+                    Every day we strive to provide the best solutions, delivered on time.  Doing the right thing for our clients is paramount and our reputation speaks for itself and is our Consulting Philosophy.</p>
+                <div class="footer-tittles">
+                    <p>CEO, Consulto</p>
+                    <h2>Rama Jaradat</h2>
                 </div>
-                <!-- collapse-wrapper -->
-                <div class="collapse-wrapper">
-                    <div class="accordion" id="accordionExample">
-                        <!-- single-one -->
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link collapsed"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Starts the automated process.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Area End-->
+<!--! About Area Start 02-->
+<div class="about-area2">
+    <!-- left Contents -->
+    <div class="about-details2">
+        <div class="right-caption2">
+            <!-- Section Tittle -->
+            <div class="section-tittle mb-50">
+                <h2>Creative solutions<br>from experts</h2>
+            </div>
+            <!-- collapse-wrapper -->
+            <div class="collapse-wrapper">
+                <div class="accordion" id="accordionExample">
+                    <!-- single-one -->
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <a href="#" class="btn-link collapsed"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">What is consulting?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Consulting is defined as the practice of providing a third party with expertise on a matter in exchange for a fee. The service may involve either advisory or implementation services. For the consultant, taking an independent and unbiased stance on an issue is central to his/her role.
+
                             </div>
                         </div>
-                        <!-- single-two -->
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">The automated process starts.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
+                    </div>
+                    <!-- single-two -->
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">What skills does our consultants have for consulting?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Creative thinking, Problem-solving,Communicating clearly and empathetically, Organization, time management, and Curiosity.
+
                             </div>
                         </div>
-                        <!-- single-three -->
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link collapsed"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Automated process starts.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
+                    </div>
+                    <!-- single-three -->
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <a href="#" class="btn-link collapsed"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">What are the five phases of consulting?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Contact, Discussion, Negotiation, Implementation and Evaluation.
+
                             </div>
                         </div>
-                        <!-- single-four -->
-                        <div class="card">
-                            <div class="card-header" id="headingfouree">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseFoure" aria-expanded="false" aria-controls="collapseFoure">Process the automated magic.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseFoure" class="collapse" aria-labelledby="headingfouree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
+                    </div>
+                    <!-- single-four -->
+                    <div class="card">
+                        <div class="card-header" id="headingfouree">
+                            <h2 class="mb-0">
+                                <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseFoure" aria-expanded="false" aria-controls="collapseFoure">How does a consultant help?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseFoure" class="collapse" aria-labelledby="headingfouree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                Consultants provide analysis, insights, and recommendations for clients using their own expertise in relevant fields and in problem-solving.
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Right Contents  -->
-        <div class="about-img2">
-            <div class="info-man2">
-                <div class="head-cap2">
-                    <img src="assets/img/icon/quality.svg" alt="">
-                    <h3>900+</h3>
-                </div>
-                <p>Interdum nulla, ut commodo<br>diam libero vitae erat.</p>
+    </div>
+    <!--Right Contents  -->
+    <div class="about-img2">
+        <div class="info-man2">
+            <div class="head-cap2">
+                <img src="assets/img/icon/quality.svg" alt="">
+                <h3>900+</h3>
             </div>
-            <div class="info-man2 info-man3">
-                <div class="head-cap2">
-                    <img src="assets/img/icon/heart.svg" alt="">
-                    <h3>95%</h3>
-                </div>
-                <p>Interdum nulla, ut commodo<br> diam libero vitae erat.</p>
-            </div>
+            <p>Interdum nulla, ut commodo<br>diam libero vitae erat.</p>
         </div>
-    </div> --}}
-    <!-- About Area End-->
+        <div class="info-man2 info-man3">
+            <div class="head-cap2">
+                <img src="assets/img/icon/heart.svg" alt="">
+                <h3>95%</h3>
+            </div>
+            <p>Interdum nulla, ut commodo<br> diam libero vitae erat.</p>
+        </div>
+    </div>
+</div>
+<!-- About Area End-->
     <!--? Testimonial Area Start -->
     <section class="testimonial-area testimonial-padding fix" data-background="assets/img/gallery/section_bg03.png">
         <div class="container">
@@ -264,103 +247,9 @@
             </div>
         </div>
     </section>
-    <!--? Testimonial Area End -->
-    <!-- Dashboard Blog Start -->
-    {{-- <section class="home-blog section-padding40 fix">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="cl-xl-7 col-lg-8 col-md-10">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle text-center mb-70">
-                        <span>Case studies</span>
-                        <h2>Some great stuffs we have done</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="blog-active">
-                <!-- Single -->
-                <div class="single-blogs">
-                    <div class="blog-img">
-                        <img src="assets/img/gallery/blogs1.png" alt="">
-                    </div>
-                    <div class="blogs-cap">
-                        <h5><a href="#">Starts the automated process.</a></h5>
-                        <p>The automated process starts as soon as your  clothes go into the machine.</p>
-                    </div>
-                    <div class="stickers">
-                        <span>Urban</span>
-                    </div>
-                </div>
-                <!-- Single -->
-                <div class="single-blogs">
-                    <div class="blog-img">
-                        <img src="assets/img/gallery/blogs2.png" alt="">
-                    </div>
-                    <div class="blogs-cap">
-                        <h5><a href="#">Starts the automated process.</a></h5>
-                        <p>The automated process starts as soon as your  clothes go into the machine.</p>
-                    </div>
-                    <div class="stickers">
-                        <span>Urban</span>
-                    </div>
-                </div>
-                <!-- Single -->
-                <div class="single-blogs">
-                    <div class="blog-img">
-                        <img src="assets/img/gallery/blogs3.png" alt="">
-                    </div>
-                    <div class="blogs-cap">
-                        <h5><a href="#">Starts the automated process.</a></h5>
-                        <p>The automated process starts as soon as your  clothes go into the machine.</p>
-                    </div>
-                    <div class="stickers">
-                        <span>Urban</span>
-                    </div>
-                </div>
-                <!-- Single -->
-                <div class="single-blogs">
-                    <div class="blog-img">
-                        <img src="assets/img/gallery/blogs2.png" alt="">
-                    </div>
-                    <div class="blogs-cap">
-                        <h5><a href="#">Starts the automated process.</a></h5>
-                        <p>The automated process starts as soon as your  clothes go into the machine.</p>
-                    </div>
-                    <div class="stickers">
-                        <span>Urban</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- Dashboard Blog End -->
-    {{-- <!--? Office environment  Start-->
-    <section class="office-environments section-bg2 section-padding40"  data-background="assets/img/gallery/section_bg02.png">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-8">
-                    <div class="office-pera">
-                        <div class="section-tittle">
-                            <h2 class="mb-30">Office <br>Environment</h2>
-                            <p>The automated process starts as soon as
-                                your clothes go into the machine. Duis cursus, mi quis
-                                viverra ornare, eros dolor interdum nulla, ut commodo
-                                diam libero vitae erat. Aenean faucibus nibh et justo
-                                cursus id rutrum lorem imperdiet. Nunc ut sem vitae
-                                risus tristique posuere.</p>
 
-                                <p>Interdum nulla, ut commodo diam libero vitae erat.
-                                Aenean faucibus nibh et justo cursus id rutrum lorem
-                            imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- Office environment  End-->
     <!--? Team Ara Start -->
-    <section class="team-area section-padding40">
+    <section class="team-area section-padding30" id="consultants">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="cl-xl-7 col-lg-8 col-md-10">
@@ -372,10 +261,16 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($Cons as $user)
+                @php
+                $userCon =App\Models\User::find($user['user_id']);
+                @endphp
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team mb-30">
                         <div class="team-img">
-                            <img src="assets/img/gallery/team1.png" alt="">
+                            {{-- <img src="assets/img/gallery/team2.png" alt=""> --}}
+                            <img src="data:image/jpg;charset=utf8;base64,{{ $user['image'] }}" alt="">
+
                             <div class="team-social">
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -386,72 +281,16 @@
                             </div>
                         </div>
                         <div class="team-caption">
-                            <h3><a href="#">Jacika Chouhan</a></h3>
-                            <p>Senior business consultant</p>
+                            <h3><a href="#">{{ $userCon['name'] }}</a></h3>
+                            <p>{{ $user['overview'] }}</p>
                         </div>
                         <!-- Blog Social -->
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team2.png" alt="">
-                            <div class="team-social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-caption">
-                            <h3><a href="#">Dirluba Jahan</a></h3>
-                            <p>Senior business consultant</p>
-                        </div>
-                        <!-- Blog Social -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team3.png" alt="">
-                            <div class="team-social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-caption">
-                            <h3><a href="#">Michel Frade</a></h3>
-                            <p>Senior business consultant</p>
-                        </div>
-                        <!-- Blog Social -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team4.png" alt="">
-                            <div class="team-social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-caption">
-                            <h3><a href="#">Kalisha Milano</a></h3>
-                            <p>Senior business consultant</p>
-                        </div>
-                        <!-- Blog Social -->
-                    </div>
-                </div>
+                @endforeach
+
+
+
             </div>
         </div>
     </section>
@@ -468,8 +307,14 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6">
+                        @guest
+                        <a href="{{ asset('/register') }}" class="btn w-btn wantToWork-btn mr-20">Make an Appointment</a>
+
+                        @else
+
                         <a href="{{ asset('/appointment') }}" class="btn w-btn wantToWork-btn mr-20">Make an Appointment</a>
-                        <a href="#" class="btn2 w-btn wantToWork-btn"><i class="fas fa-phone"></i> +962778084901</a>
+                        @endguest
+                        <a  href="tel:+962778084901" class="btn2 w-btn wantToWork-btn"><i class="fas fa-phone"></i> +962778084901</a>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Consilia</title>
+    <title>Consilia Dashboard</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -46,8 +46,8 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="dashboard" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Consilia Admin Dashboard</span>
+                <img src="../../assets2/img/Logo.png" alt="">
+                <span class="d-none d-lg-block">Dashboard</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -118,26 +118,26 @@
             </li><!-- End Users Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="owners">
+                <a class="nav-link collapsed" href="consultants">
                     <i class="bi bi-layout-text-window-reverse"></i>
                     <span>Consultant</span>
                 </a>
             </li><!-- End Owners Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="surveys">
+                <a class="nav-link collapsed" href="services">
                     <i class="bi bi-journal-text"></i>
                     <span>Services</span>
                 </a>
             </li><!-- End Surveys Nav -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="contact">
                     <i class="bi bi-people-fill"></i>
                     <span>Contacts</span>
                 </a>
-            </li><!-- End Contacts Nav -->
+            </li><!-- End Contacts Nav --> --}}
             <li class="nav-item">
-                <a class="nav-link collapsed" href="subscribers">
+                <a class="nav-link collapsed" href="appointement">
                     <i class="bi bi-person-plus-fill"></i>
                     <span>Appointment</span>
                 </a>
@@ -159,14 +159,14 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Goal Survey</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Consilia</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed & Developed by Goal Team
+            Designed & Developed by Consilia Team
         </div>
     </footer>
     <!-- End Footer -->

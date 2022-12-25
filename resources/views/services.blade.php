@@ -38,20 +38,24 @@
                     </div>
                 </div>
             </div>
+            <div class=" d-flex">
+
+            @foreach ($Services as $service)
+
             <div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 ">
                     <div class="single-services single-services2 mb-30 section-over1 text-center">
                         <div class="services-img">
                             <img src="assets/img/gallery/Research paper-amico.png" alt="">
                             <div class="services-caption">
-                                <h3><a href="#">Feasibiliaty Study</a></h3>
-                                <p>examines the viability or sustainability of an idea, project, or business.</p>
+                                <h3><a href="#">{{ $service['name'] }}</a></h3>
+                                <p>{{ $service['description'] }}</p>
                                 <a href="{{ asset('/appointment') }}" class="btn btn3">Make Appointment</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                {{-- <div class="col-lg-4 col-md-6">
                     <div class="single-services single-services2 mb-30 section-over1 text-center">
                         <div class="services-img">
                             <img src="assets/img/gallery/Analyze-bro.png" alt="">
@@ -110,9 +114,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
+            @endforeach
+        </div>
+
         </div>
     </section>
     <!--Services Area End -->

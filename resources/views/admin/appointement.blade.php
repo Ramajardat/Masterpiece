@@ -5,10 +5,10 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Our Subscription</h1>
+            <h1>Our Appointement</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="subscribers">subscribers</a></li>
+                    <li class="breadcrumb-item"><a href="subscribers">Appointement</a></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -26,23 +26,20 @@
                                         <!-- row -->
                                         <tr>
                                             <th>#</th>
-                                            <th>Email</th>
-                                            <th>Subscription Date</th>
+                                            <th>appointment_time</th>
+                                            <th>About the project</th>
                                         </tr>
 
-                                        {{-- @foreach ($allSubscribers as $subscriber) --}}
-                                            <tr>
+                                        @foreach($appointments as $appointment)
+                                        <tr>
                                                 <td>
-                                                    {{-- {{ $subscriber->id }} --}}
-                                                </td>
+                                                    {{$appointment->id}}                                                </td>
                                                 <td>
-                                                    {{-- {{ $subscriber->email }} --}}
-                                                </td>
+                                                    {{$appointment->appointment_time}}                                                </td>
                                                 <td>
-                                                    {{-- {{ $subscriber->created_at }} --}}
-                                                </td>
+                                                    {{$appointment->message}}                                                </td>
                                             </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
 
                                     </tbody>
                                 </table>

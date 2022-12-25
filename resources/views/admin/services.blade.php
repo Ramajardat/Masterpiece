@@ -4,10 +4,10 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>All Surveys</h1>
+            <h1>All Services</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="surveys">surveys</a></li>
+                    <li class="breadcrumb-item"><a href="surveys">Services</a></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -22,24 +22,24 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Link</th>
-                                        <th scope="col">Category</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col">numberOfMembers</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($SurveysArr as $survey) --}}
+                                    @foreach ($Services as $service)
                                         <tr>
-                                            {{-- <th scope="row">{{ $survey['id'] }}</th>
-                                            <td>{{ $survey['survey_name'] }}</td>
-                                            <td>{{ $survey['survey_link'] }}</td>
-                                            <td>{{ $survey['category'] }}</td> --}}
+                                            <th scope="row">{{ $service['id'] }}</th>
+                                            <td>{{ $service['name'] }}</td>
+                                            <td>{{ $service['description'] }}</td>
+                                            <td>{{ $service['numberOfMembers'] }}</td>
                                             <td>
-                                                {{-- <a href="/delete/{{ $survey['id'] }}"
-                                                    class="bi bi-trash ms-4"onclick="return confirm('Are you sure?')"> --}}
+                                                <a href="/delete/{{ $service['id'] }}"
+                                                    class="bi bi-trash ms-4"onclick="return confirm('Are you sure?')">
                                             </td>
                                         </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
