@@ -13,7 +13,13 @@
                         <h1 data-animation="fadeInLeft" data-delay=".4s">Business  Consulting</h1>
                         <p data-animation="fadeInLeft" data-delay=".6s">We Help To Push Your Business To The Top Level.</p>
                         <!-- Hero Btn -->
+                        @guest
+
                         <a href="{{ asset('/register') }}" class="btn"  data-animation="fadeInLeft" data-delay=".9s" >Start Now</a>
+                        @else
+                        <a href="#services" class="btn"  data-animation="fadeInLeft" data-delay=".9s" >Start Now</a>
+                        @endguest
+
                     </div>
                     <div class="hero-img">
                         <img src="assets/img/hero/h1_hero1.png" alt=""  data-animation="fadeInRight" data-transition-duration="5s">
@@ -28,7 +34,7 @@
     </div>
     <!-- slider Area End-->
     <!--? Services Area Start -->
-    <section class="services-section section-padding30 fix">
+    <section class="services-section section-padding30 fix" id="services">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-10 col-lg-10 col-md-12">
@@ -40,18 +46,23 @@
                     </div>
                 </div>
             </div>
-            <div class="services-active">
+            <div class="all services-active d-flex">
+            @foreach ($Services as $service)
+
+            {{-- <div class="services-active"> --}}
                 <div class="single-services section-over1 text-center">
                     <div class="services-img">
                         <img src="assets/img/gallery/Research paper-amico.png" alt="">
                         <div class="services-caption">
-                            <h3><a href="#">Feasibiliaty Study</a></h3>
-                            <p>examines the viability or sustainability of an idea, project, or business.</p>
+                            <h3><a href="#">{{ $service['name'] }}</a></h3>
+                            <p>{{ $service['description'] }}</p>
                             <a href="{{ asset('/appointment') }}" class="btn btn3">Make Appointment</a>
                         </div>
                     </div>
                 </div>
-                <div class="single-services section-over1 text-center">
+                @endforeach
+            </div>
+                {{-- <div class="single-services section-over1 text-center">
                     <div class="services-img">
                         <img src="assets/img/gallery/Analyze-bro.png" alt="">
                         <div class="services-caption">
@@ -83,8 +94,8 @@
                             <a href="{{ asset('/appointment') }}" class="btn btn3">Make Appointment</a>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>--}}
+            {{-- </div> --}}
         </div>
     </section>
     <!--Services Area End -->
@@ -119,102 +130,7 @@
             </div>
         </div>
     </section>
-    <!-- About Area End-->
-    <!--! About Area Start 02-->
-    <div class="about-area2">
-        <!-- left Contents -->
-        <div class="about-details2">
-            <div class="right-caption2">
-                <!-- Section Tittle -->
-                <div class="section-tittle mb-50">
-                    <h2>Creative solutions<br>from experts</h2>
-                </div>
-                <!-- collapse-wrapper -->
-                <div class="collapse-wrapper">
-                    <div class="accordion" id="accordionExample">
-                        <!-- single-one -->
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link collapsed"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Starts the automated process.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
-                            </div>
-                        </div>
-                        <!-- single-two -->
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">The automated process starts.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
-                            </div>
-                        </div>
-                        <!-- single-three -->
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link collapsed"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Automated process starts.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
-                            </div>
-                        </div>
-                        <!-- single-four -->
-                        <div class="card">
-                            <div class="card-header" id="headingfouree">
-                                <h2 class="mb-0">
-                                    <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseFoure" aria-expanded="false" aria-controls="collapseFoure">Process the automated magic.</a>
-                                </h2>
-                            </div>
-                            <div id="collapseFoure" class="collapse" aria-labelledby="headingfouree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The automated process starts as soon as
-                                    your clothes go into the machine. Duis cursus, mi
-                                    quis viverra ornare.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Right Contents  -->
-        <div class="about-img2">
-            <div class="info-man2">
-                <div class="head-cap2">
-                    <img src="assets/img/icon/quality.svg" alt="">
-                    <h3>900+</h3>
-                </div>
-                <p>Interdum nulla, ut commodo<br>diam libero vitae erat.</p>
-            </div>
-            <div class="info-man2 info-man3">
-                <div class="head-cap2">
-                    <img src="assets/img/icon/heart.svg" alt="">
-                    <h3>95%</h3>
-                </div>
-                <p>Interdum nulla, ut commodo<br> diam libero vitae erat.</p>
-            </div>
-        </div>
-    </div> --}}
-    <!-- About Area End-->
+
     <!--? Testimonial Area Start -->
     <section class="testimonial-area testimonial-padding fix" data-background="assets/img/gallery/section_bg03.png">
         <div class="container">
@@ -360,7 +276,7 @@
     </section> --}}
     <!-- Office environment  End-->
     <!--? Team Ara Start -->
-    <section class="team-area section-padding40">
+    <section class="team-area section-padding20">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="cl-xl-7 col-lg-8 col-md-10">
@@ -372,10 +288,16 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($Cons as $user)
+                @php
+                $userCon =App\Models\User::find($user['user_id']);
+                @endphp
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team mb-30">
                         <div class="team-img">
-                            <img src="assets/img/gallery/team1.png" alt="">
+                            {{-- <img src="assets/img/gallery/team2.png" alt=""> --}}
+                            <img src="data:image/jpg;charset=utf8;base64,{{ $user['image'] }}" alt="">
+
                             <div class="team-social">
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -386,12 +308,13 @@
                             </div>
                         </div>
                         <div class="team-caption">
-                            <h3><a href="#">Jacika Chouhan</a></h3>
-                            <p>Senior business consultant</p>
+                            <h3><a href="#">{{ $userCon['name'] }}</a></h3>
+                            <p>{{ $user['overview'] }}</p>
                         </div>
                         <!-- Blog Social -->
                     </div>
                 </div>
+                @endforeach
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team mb-30">
                         <div class="team-img">
@@ -412,46 +335,8 @@
                         <!-- Blog Social -->
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team3.png" alt="">
-                            <div class="team-social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-caption">
-                            <h3><a href="#">Michel Frade</a></h3>
-                            <p>Senior business consultant</p>
-                        </div>
-                        <!-- Blog Social -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-team mb-30">
-                        <div class="team-img">
-                            <img src="assets/img/gallery/team4.png" alt="">
-                            <div class="team-social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-caption">
-                            <h3><a href="#">Kalisha Milano</a></h3>
-                            <p>Senior business consultant</p>
-                        </div>
-                        <!-- Blog Social -->
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </section>

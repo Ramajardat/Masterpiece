@@ -16,12 +16,10 @@ return new class extends Migration
         Schema::create('consultants', function (Blueprint $table) {
 
             $table->id();
-            $table->string('consultant_name');
-            $table->string('consultant_email')->unique();
-            $table->string('password');
+
             $table->binary('image');
             $table->binary('certificate');
-            $table->date('available_time');
+            $table->date('available_time')->nullable();
             $table->string('overview');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('departement_id')->constrained()->onDelete('cascade');

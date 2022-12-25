@@ -62,7 +62,7 @@
                                         <li><a href="{{ asset('/about') }}">about</a>
 
                                         </li>
-                                        <li><a href="{{ asset('/services') }}">Services</a></li>
+                                        {{-- <li><a href="#services">Services</a></li> --}}
                                         <li><a href="{{ asset('/contact') }}">Contact</a></li>
 
                                         {{-- <li><a href="{{ route('logout') }}">Logout</a></li> --}}
@@ -110,6 +110,7 @@
                             </div>
                             <!-- left Btn -->
                             <div class="header-right-btn f-right d-none d-lg-block  ml-30">
+
                                 <a href="{{ asset('/appointment') }}" class="header-btn">Make an Appointment</a>
                             </div>
                         </div>

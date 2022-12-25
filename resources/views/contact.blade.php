@@ -38,7 +38,17 @@
                     <h2 class="contact-title">Get in Touch</h2>
                 </div>
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+
+							  @if(Session::has('success'))
+							  <div class="alert alert-success">
+								  {{ Session::get('success') }}
+								  @php
+									  Session::forget('success');
+								  @endphp
+							  </div>
+							  @endif
+                    <form class="form-contact contact_form" method="POST" enctype="multipart/form-data" action="/contact-form" id="contactForm" name="contactForm" >
+                        @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
@@ -62,7 +72,7 @@
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                            <input type="submit" class="button button-contactForm boxed-btn" value="Send Message"/>
                         </div>
                     </form>
                 </div>
@@ -77,14 +87,16 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                         <div class="media-body">
-                            <h3>+962778084901</h3>
+                            <h3>  <a href="tel:+962778084901">+962778084901</a></h3>
                             <p>Sun to Thu 9am to 6pm</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
-                            <h3>consilia@gmail.com</h3>
+                            <h3> <a href="mailto:consilia@gmail.com">consilia@gmail.com</a></h3>
+
+
                             <p>Send us your query anytime!</p>
                         </div>
                     </div>

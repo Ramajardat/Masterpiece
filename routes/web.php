@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Users;
+use App\Http\Controllers\Services;
+use Illuminate\Foundation\Auth\User;
+use App\Http\Controllers\Departments;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AppointemnetController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 /*
@@ -14,31 +19,25 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Departments::class, 'home']);
 
-Route::get('contact', function () {
-    return view('contact');
-});
+
+Route::get('/contact', [ContactController::class, 'contactForm'])->name('contact-form');
+Route::post('/contact-form', [ContactController::class, 'storeContactForm'])->name('contact-form.store');
+
 Route::get('about', function () {
     return view('about');
 });
-Route::get('services', function () {
-    return view('services');
-});
-Route::get('appointment', function () {
-    return view('appointment');
-});
+Route::get('services', [Departments::class, 'index']);
+Route::get('appointment', [AppointemnetController::class, 'index']);
+Route::post('store', [AppointemnetController::class, 'store'])->name("store");
 Route::get('payment', function () {
     return view('payment');
 });
 Route::get('profile', function () {
     return view('profile');
 });
-Route::post('appoint', [AppointemnetController::class, 'store']);
 
-Route::post('/storeCon', [RegisteredUserController::class, 'storeCon'])->name("storeCon");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -47,27 +46,19 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 // admin dashboard
-// Route::get('admin/dashboard', [UserController::class, 'getUsers'])->middleware(['auth', 'can:isAdmin']);
-// Route::get('admin/owners', [UserController::class, 'getOwners'])->middleware('admin')->middleware(['auth', 'can:isAdmin']);;
+Route::get('admin/dashboard', [Users::class, 'getUsers']);
+Route::get('admin/consultants', [Users::class, 'getConsultants']);
+Route::get('delete/{id}', [Users::class, 'destroy']);
 
-// Route::get('admin/surveys', [SurveyController::class, 'getSurveys'])->middleware('admin')->middleware(['auth', 'can:isAdmin']);
+
+Route::get('admin/services', [Departments::class, 'getServices']);
+Route::get('delete/{id}', [Departments::class, 'destroy']);
+
 
 // Route::get('/admin/contact', [ContactController::class, 'showContact'])->name('admin.contact')->middleware(['auth', 'can:isAdmin']);
 // Route::get('/admin/subscribers', [ContactController::class, 'showSubscribers'])->name('admin.subscribers');
 
-Route::get('admin/dashboard', function () {
-    return view('admin/dashboard');
-});
 
-Route::get('admin/owners', function () {
-    return view('admin/owners');
-});
-Route::get('admin/surveys', function () {
-    return view('admin/surveys');
-});
-Route::get('admin/contact', function () {
-    return view('admin/contact');
-});
-Route::get('admin/subscribers', function () {
-    return view('admin/subscribers');
+Route::get('admin/appointement', function () {
+    return view('admin/appointement');
 });

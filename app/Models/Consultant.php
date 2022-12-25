@@ -16,6 +16,7 @@ class Consultant extends Model
         "certificate",
         "image",
         'overview',
-        'consultant_id'
+        'departement_id',
+        'user_id'
     ];
 }

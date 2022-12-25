@@ -110,11 +110,11 @@ class RegisteredUserController extends Controller
 
         ]);
 
-        event(new Registered($user));
 
-        Auth::login($user);
+        // event(new Registered($user));
+        if (Auth::login($user)) {
 
-
-        return redirect('/');
+            return redirect('/');
+        }
     }
 }

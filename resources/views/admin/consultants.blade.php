@@ -4,10 +4,10 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Our Owners</h1>
+            <h1>Our Consultants</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="owners">Owners</a></li>
+                    <li class="breadcrumb-item"><a href="owners">Consultants</a></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -25,28 +25,33 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
-                                        {{-- <th scope="col">Age</th>
-                                        <th scope="col">Education Level</th>
-                                        <th scope="col">City</th> --}}
+                                        <th scope="col">overview</th>
+                                        <th scope="col">departement_id </th>
+                                        <th scope="col">status</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($ownersArr as $user) --}}
+                                    @foreach ($conArr as $user)
+                                  @php
+                                  $userCon =App\Models\User::find($user['user_id']);
+                                  @endphp
                                         <tr>
-                                            {{-- <th scope="row">{{ $user['id'] }}</th>
-                                            <td>{{ $user['name'] }}</td>
-                                            <td>{{ $user['email'] }}</td> --}}
+                                            <th scope="row">{{ $user['user_id'] }}</th>
+                                            <td>{{ $userCon['name'] }}</td>
+                                            <td>{{ $userCon['email'] }}</td>
+                                            <td>{{ $user['overview'] }}</td>
+                                            <td>{{ $user['departement_id'] }}</td>
+                                            <td>{{ $user['status'] }}</td>
 
                                             <td>
-                                                {{-- <a href="/delete/{{ $user['id'] }}"
-                                                    class="bi bi-trash ms-4"onclick="return confirm('Are you sure?')"> --}}
+                                                <a href="/delete/{{ $user['id'] }}"
+                                                    class="bi bi-trash ms-4"onclick="return confirm('Are you sure?')">
 
-                                                    {{-- <a href=""><i class="bi bi-pencil-square"></i></a> --}}
 
                                             </td>
                                         </tr>
-                                    {{-- @endforeach --}}
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
