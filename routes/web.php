@@ -5,6 +5,7 @@ use App\Http\Controllers\Services;
 use Illuminate\Foundation\Auth\User;
 use App\Http\Controllers\Departments;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AppointemnetController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -29,7 +30,7 @@ Route::get('about', function () {
     return view('about');
 });
 Route::get('services', [Departments::class, 'index']);
-Route::get('appointment', [AppointemnetController::class, 'index']);
+Route::get('appointment', [AppointemnetController::class, 'index'])->middleware('can:user');
 Route::post('store', [AppointemnetController::class, 'store'])->name("store");
 Route::get('payment', function () {
     return view('payment');
@@ -44,17 +45,19 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 // admin dashboard
-Route::get('admin/dashboard', [Users::class, 'getUsers']);
-Route::get('admin/consultants', [Users::class, 'getConsultants']);
+Route::get('admin/dashboard', [Users::class, 'getUsers'])->middleware('can:Admin');;
+Route::get('admin/consultants', [Users::class, 'getConsultants'])->middleware('can:Admin');
 Route::get('delete/{id}', [Users::class, 'destroy']);
 
 
-Route::get('admin/services', [Departments::class, 'getServices']);
+Route::get('admin/services', [Departments::class, 'getServices'])->middleware('can:Admin');
 Route::get('delete/{id}', [Departments::class, 'destroy']);
+Route::get('/approve/{id}', [Departments::class, 'approve']);
+
 
 
 // Route::get('/admin/contact', [ContactController::class, 'showContact'])->name('admin.contact')->middleware(['auth', 'can:isAdmin']);
 // Route::get('/admin/subscribers', [ContactController::class, 'showSubscribers'])->name('admin.subscribers');
 
 
-Route::get('admin/appointement', [AppointemnetController::class, 'showAppoin']);
+Route::get('admin/appointement', [AppointemnetController::class, 'showAppoin'])->middleware('can:Admin');

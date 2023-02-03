@@ -296,7 +296,7 @@
     </section>
     <!-- Team Ara End -->
     <!--? Want To work -->
-    <section class="wantToWork-area section-bg2"  data-background="assets/img/gallery/section_bg01.png">
+    {{-- <section class="wantToWork-area section-bg2"  data-background="assets/img/gallery/section_bg01.png">
         <div class="container">
             <div class="wants-wrapper w-padding2">
                 <div class="row align-items-center justify-content-between">
@@ -313,6 +313,30 @@
                         @else
 
                         <a href="{{ asset('/appointment') }}" class="btn w-btn wantToWork-btn mr-20">Make an Appointment</a>
+                        @endguest
+                        <a  href="tel:+962778084901" class="btn2 w-btn wantToWork-btn"><i class="fas fa-phone"></i> +962778084901</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> --}}
+    <section class="wantToWork-area section-bg2"  data-background="assets/img/gallery/section_bg01.png">
+        <div class="container">
+            <div class="wants-wrapper w-padding2">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-7 col-lg-7 col-md-12">
+                        <div class="wantToWork-caption wantToWork-caption2">
+                            <h2>What are you waiting for? </h2>
+                            <p>Join us now to be our new consultant!</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        @guest
+                        <a href="{{ asset('/registerConsultant') }}" class="btn w-btn wantToWork-btn mr-20">Join as Consultant</a>
+
+                        @else
+
+                        <a href="{{ asset('/') }}" class="btn w-btn wantToWork-btn mr-20">Join as Consultant</a>
                         @endguest
                         <a  href="tel:+962778084901" class="btn2 w-btn wantToWork-btn"><i class="fas fa-phone"></i> +962778084901</a>
                     </div>
