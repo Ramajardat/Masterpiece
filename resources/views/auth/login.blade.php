@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('login')
-<div class="container mt-5 w-50 h-auto">
+<div class="container mt-5 w-50 " style="height: 350px;">
 <x-guest-layout>
         <h1 style="margin-bottom:10px">Login</h1>
         <!-- Session Status -->
@@ -31,7 +31,7 @@
             </div>
 
             <!-- Remember Me -->
-            <div class="block mt-4">
+            {{-- <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
@@ -43,8 +43,12 @@
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
-                @endif
-
+                @endif --}}
+                <br>
+                <a class="underline text-sm text-dark-600 hover:text-dark-900" href="{{ route('register') }}">
+                    {{ __('New to Consilia?') }}
+                </a>
+                <br>
                 <x-primary-button class="button button-contactForm boxed-btn ml-3">
                     {{ __('Log in') }}
                 </x-primary-button>

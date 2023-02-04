@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Consultant;
 use App\Models\departement;
 use Illuminate\Http\Request;
+use PHPUnit\TextUI\XmlConfiguration\Constant;
 
 class Departments extends Controller
 {
@@ -21,7 +22,7 @@ class Departments extends Controller
     public function home()
     {
         $Services =  departement::all();
-        $Cons =  Consultant::all();
+        $Cons =  Consultant::where('status', '=', 'approved')->get();;
         return view('welcome', ['Services' => $Services, 'Cons' => $Cons]);
     }
 
@@ -43,9 +44,12 @@ class Departments extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function approve($id)
     {
-        //
+        $consultant = Consultant::findOrFail($id);
+        $consultant->status = 'approved';
+        $consultant->save();
+        return redirect()->back();
     }
 
     /**

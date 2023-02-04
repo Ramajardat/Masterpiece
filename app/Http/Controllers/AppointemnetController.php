@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\TextUI\XmlConfiguration\Constant;
 
 class AppointemnetController extends Controller
 {
@@ -25,10 +26,17 @@ class AppointemnetController extends Controller
 
     public function showuserpage()
     {
-        $profileappoin = Appointement::all();
+        $user = Auth::user();
+        $profileappoin = Appointement::where('user_id', $user->id)->get();
 
 
         return view('profile', ['user_id' => Auth::user()->id, 'appointments' => $profileappoin]);
+
+        // Retrieve all of the user's bank accounts from the database
+
+        // Pass the bank accounts to the view
+        // return view('/bank', compact('bankAccounts'));
+
     }
 
     public function showAppoin()
@@ -71,6 +79,11 @@ class AppointemnetController extends Controller
         $appointment->consultant_id = $time[0];
 
         $appointment->save();
+
+        $consultant = Consultant::find($time[0]);
+        $consultant->is_available = false;
+        $consultant->save();
+
         return redirect("/")->with('mssg', 'Your appointment has been booked successfully');
     }
 
